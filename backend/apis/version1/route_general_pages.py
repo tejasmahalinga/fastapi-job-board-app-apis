@@ -5,4 +5,4 @@ general_pages_router=APIRouter()
 
 @general_pages_router.get("/")
 async def home(request:Request):
-    return {"request":request}
+    return {"detail":"Server is running"}
