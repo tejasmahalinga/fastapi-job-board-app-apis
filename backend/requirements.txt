@@ -14,4 +14,8 @@ passlib[bcrypt]
 pytest
 requests
 
+python-jose
+python-multipart
+
+
 pre-commit
