@@ -1,7 +1,7 @@
 from apis.version1 import route_general_pages
 from apis.version1 import route_jobs
+from apis.version1 import route_login
 from apis.version1 import route_users
-from apis.version1 import route_login 
 from fastapi import APIRouter
 
 

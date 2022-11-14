@@ -1,17 +1,18 @@
-from db.models.jobs import Job
-from db.repository.jobs import create_new_job, delete_job_by_id, list_jobs, update_job_by_id
+from typing import List
 
+from apis.version1.route_login import get_current_user_from_token  #new
+from db.models.jobs import Job
+from db.models.users import User #new
+from db.repository.jobs import create_new_job
+from db.repository.jobs import delete_job_by_id
+from db.repository.jobs import list_jobs
 from db.repository.jobs import retreive_job
+from db.repository.jobs import update_job_by_id
 from db.session import get_db
 from fastapi import APIRouter
 from fastapi import Depends
 from fastapi import HTTPException
 from fastapi import status
-from typing import List       
-from db.models.users import User #new
-from apis.version1.route_login import get_current_user_from_token  #new
-
-
 from schemas.jobs import JobCreate
 from schemas.jobs import ShowJob
 from sqlalchemy.orm import Session
@@ -38,7 +39,7 @@ def read_jobs(db:Session = Depends(get_db)):
     jobs = list_jobs(db=db)
     return jobs
 
-@router.put("/update/{id}")   
+@router.put("/update/{id}")
 def update_job(id: int,job: JobCreate,db: Session = Depends(get_db)):
     current_user = 1
     message = update_job_by_id(id=id,job=job,db=db,owner_id=current_user)
@@ -58,5 +59,3 @@ def delete_job(id: int,db: Session = Depends(get_db),current_user: User = Depend
         return {"msg":"Successfully deleted."}
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail=f"You are not permitted!!!!")
-
-

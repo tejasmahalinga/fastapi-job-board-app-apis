@@ -1,4 +1,5 @@
 import json
+
 from fastapi import status
 
 
@@ -77,4 +78,3 @@ def test_delete_a_job(client):            #new
     msg = client.delete("/jobs/delete/1")
     response = client.get("/jobs/get/1/")
     assert response.status_code == status.HTTP_404_NOT_FOUND
-
