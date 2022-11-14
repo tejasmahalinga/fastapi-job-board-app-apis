@@ -1,9 +1,9 @@
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
-env_path = Path('.') / '.env'
-load_dotenv(dotenv_path=env_path)
+# from dotenv import load_dotenv
+# env_path = Path('.') / '.env'
+# load_dotenv(dotenv_path=env_path)
 
 class Settings:
     PROJECT_NAME:str = "Job Board"
@@ -19,8 +19,8 @@ class Settings:
     SQLITE_DB_NAME="watches_db.db"
     DATABASE_URL = f"sqlite:///./{SQLITE_DB_NAME}"
 
-
-    SECRET_KEY :str = os.getenv("SECRET_KEY")
+    SECRET_KEY = "Watch20"
+    # SECRET_KEY :str = os.getenv("SECRET_KEY")
     ALGORITHM = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES = 30  #in mins
 
